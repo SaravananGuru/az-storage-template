@@ -31,19 +31,3 @@ locals {
     k => v.private_service_connection[0].private_ip_address
   }
 }
-
-
-resource "azurerm_private_dns_a_record" "storage_account_for_on_prem" {
-for_each = { for k, v in var.private_endpoints : k => v if v.allow_on_prem_access }
-  provider = azurerm.y
-  zone_name           = each.value.on_prem_zone_name
-  name                = azurerm_storage_account.this.name
-  resource_group_name = each.value.on_prem_rg
-  records = [
-	azurerm_private_endpoint.this[each.key].private_service_connection[0].private_ip_address
-  ]
-  ttl = 300
-
-  tags = var.tags
-  depends_on = [azurerm_private_endpoint.this]
-}

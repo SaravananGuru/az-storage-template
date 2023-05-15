@@ -1,39 +1,3 @@
-variable "on_premise_dns_client_id" {
-  description = "Service principal applicaiton ID"
-  type        = string
-  default     = ""
-}
-
-variable "on_premise_dns_client_secret" {
-  description = "Service principal client secret"
-  type        = string
-  default     = ""
-}
-
-variable "on_premise_dns" {
-  description = "Remote state import from FX-OPS on-premises DNS Pipeline"
-  type        = any
-  default     = ""
-}
-
-variable "fxe_data_mgmt_application_id" {
-  description = "Service principal applicaiton ID"
-  type        = string
-  default     = ""
-}
-
-variable "fxe_data_mgmt_client_secret" {
-  description = "Service principal client secret"
-  type        = string
-  default     = ""
-}
-
-variable "principal_id" {
-  description = "Deployment service principal applicaiton ID"
-  type        = string
-  default     = ""
-}
-
 variable "labels_context" {
   description = "label module context"
   type        = string
