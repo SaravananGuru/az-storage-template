@@ -11,12 +11,12 @@ resource "azurerm_private_endpoint" "this" {
   subnet_id           = each.value.subnet_id
 
   private_dns_zone_group {
-    name                 = module.penp_labels.ids_with_suffix[format("%s-%s", var.name, each.key)].pendp
+    name                 = module.penp_labels.id[format("%s-%s", var.name, each.key)].pendp
     private_dns_zone_ids = [each.value.private_dns_zone_id]
   }
 
   private_service_connection {
-    name                           = module.penp_labels.ids_with_suffix[format("%s-%s", var.name, each.key)].pendp
+    name                           = module.penp_labels.id[format("%s-%s", var.name, each.key)].pendp
     private_connection_resource_id = azurerm_storage_account.this.id
     subresource_names              = [each.value.subresource_name]
     is_manual_connection           = each.value.is_manual_connection
