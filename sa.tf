@@ -6,7 +6,7 @@ resource "azurerm_storage_account" "this" {
   account_tier              = var.storage_account_tier
   account_replication_type  = var.storage_account_replication_type
   access_tier               = contains(["BlobStorage", "FileStorage", "StorageV2"], var.storage_account_kind) ? var.storage_account_access_tier : null
-  allow_blob_public_access  = false
+  # allow_blob_public_access  = false
   enable_https_traffic_only = true
   min_tls_version           = var.min_tls_version
   is_hns_enabled            = var.storage_account_enable_hns
