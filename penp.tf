@@ -1,12 +1,11 @@
 module "penp_labels" {
-  source  = "git::git@ssh.dev.azure.com:v3/fxe-data-mgmt/dmo-common-modules/terraform-null-label?ref=v1.0.1"
-  context = module.labels.context
+  source  = "https://github.com/SaravananGuru/az-label-terraform.git"
   names   = formatlist("%s-%s", var.name, keys(var.private_endpoints))
 }
 
 resource "azurerm_private_endpoint" "this" {
   for_each            = var.private_endpoints
-  name                = module.penp_labels.ids_with_suffix[format("%s-%s", var.name, each.key)].pendp
+  name                = module.penp_labels.names
   location            = azurerm_storage_account.this.location
   resource_group_name = var.resource_group_name
   subnet_id           = each.value.subnet_id

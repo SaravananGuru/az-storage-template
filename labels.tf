@@ -1,14 +1,12 @@
 module "tmp_labels" {
-  source  = "git::git@ssh.dev.azure.com:v3/fxe-data-mgmt/dmo-common-modules/terraform-null-label?ref=v1.0.1"
-  context = var.labels_context
+  source  = "https://github.com/SaravananGuru/az-label-terraform.git"
   name    = var.name
 }
 
 module "labels" {
-  source                 = "git::git@ssh.dev.azure.com:v3/fxe-data-mgmt/dmo-common-modules/terraform-null-label?ref=v1.0.1"
-  context                = module.tmp_labels.context
+  source                 = "https://github.com/SaravananGuru/az-label-terraform.git"
   name                   = var.name
-  storage_account_prefix = var.name_prefix
+  # storage_account_prefix = var.name_prefix
 
   tags = merge(
     {

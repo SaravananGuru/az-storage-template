@@ -1,12 +1,11 @@
 module "ds_labels" {
-  source  = "git::git@ssh.dev.azure.com:v3/fxe-data-mgmt/dmo-common-modules/terraform-null-label?ref=v1.0.1"
-  context = module.labels.context
+  source  = "https://github.com/SaravananGuru/az-label-terraform.git"
   name    = join(module.labels.delimiter, compact([module.labels.name, "st"]))
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
   for_each                   = var.log_analytics_workspace_id == "" ? {} : { this = "that" }
-  name                       = module.ds_labels.id_with_suffix.ds
+  name                       = module.ds_labels.name
   target_resource_id         = azurerm_storage_account.this.id
   log_analytics_workspace_id = var.log_analytics_workspace_id
   # FIXME: parameter is not set.
