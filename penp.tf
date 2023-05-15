@@ -5,7 +5,7 @@ module "penp_labels" {
 
 resource "azurerm_private_endpoint" "this" {
   for_each            = var.private_endpoints
-  name                = module.penp_labels.names
+  name                = module.penp_labels.name
   location            = azurerm_storage_account.this.location
   resource_group_name = var.resource_group_name
   subnet_id           = each.value.subnet_id
