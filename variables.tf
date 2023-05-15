@@ -1,8 +1,3 @@
-variable "labels_context" {
-  description = "label module context"
-  type        = string
-}
-
 variable "name" {
   description = "This module name. It will be used to form resource names with name parameter to labels module."
   type        = string
