@@ -1,6 +1,6 @@
 module "penp_labels" {
   source  = "github.com/SaravananGuru/az-label-terraform.git"
-  name   = formatlist("%s-%s", var.name, "pep")
+  name   = format("%s-%s", var.name, "pep")
 }
 
 resource "azurerm_private_endpoint" "this" {
