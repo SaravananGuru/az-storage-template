@@ -93,8 +93,6 @@ variable "private_endpoints" {
     subnet_id            = string
     subresource_name     = string
     private_dns_zone_id  = string
-    on_prem_zone_name    = string
-    on_prem_rg           = string
     is_manual_connection = bool
     allow_on_prem_access = bool
 
