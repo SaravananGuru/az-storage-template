@@ -122,6 +122,12 @@ variable "log_analytics_workspace_id" {
   default     = ""
 }
 
+variable "location" {
+  description = "location to use st creation"
+  type        = string
+  default     = "centralus"
+}
+
 variable "retain_log_in_days" {
   description = "Retain logs for this much days."
   type        = number
