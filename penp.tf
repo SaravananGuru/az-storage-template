@@ -1,5 +1,5 @@
 module "penp_labels" {
-  source  = "https://github.com/SaravananGuru/az-label-terraform.git"
+  source  = "github.com/SaravananGuru/az-label-terraform.git"
   names   = formatlist("%s-%s", var.name, keys(var.private_endpoints))
 }
 

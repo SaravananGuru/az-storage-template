@@ -1,5 +1,5 @@
 module "ds_labels" {
-  source  = "https://github.com/SaravananGuru/az-label-terraform.git"
+  source  = "github.com/SaravananGuru/az-label-terraform.git"
   name    = join(module.labels.delimiter, compact([module.labels.name, "st"]))
 }
 
