@@ -1,5 +1,5 @@
 locals {
-  metadata_plain = { for k, v in module.labels.tags : lower(replace(k, "-", "_")) => v }
+  metadata_plain = { for k, v in module.labels.tags.id : lower(replace(k, "-", "_")) => v }
   metadata_b64   = { for k, v in local.metadata_plain : k => base64encode(v) }
 
   blob  = { for n, c in var.containers : n => c if try(c.type, "blob") == "blob" }
